@@ -12,6 +12,16 @@
   使用上面两个命令可将learn文件夹设置为本地仓库  
 - 将文件提交到仓库  
 1. 通过git add命令将文件添加到仓库  
-> git add learn-git.md  
-  无任何显示即提交成功  
+  > git add learn-git.md  
+    无任何显示即提交成功  
+2. 通过git commit命令将文件提交到仓库  
+  >  git commit -m "第一次提交"  
+     -m后接提交说明  
+     **需要注意的是：一次commit可以添加多个文件，所以是可以多次add不同的文件的**  
+3. 使用git status查看仓库状态  
+  >  使用git status命令，可以查看文件是否被修改过。  
+     $ git status  
+  >  使用git diff查看修改内容  
+
+
 
