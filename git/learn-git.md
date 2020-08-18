@@ -10,7 +10,7 @@
   cd learn  
   git init  
   使用上面两个命令可将learn文件夹设置为本地仓库  
-- 将文件提交到仓库  
+- 常用命令    
 1. 通过git add命令将文件添加到仓库  
   > git add learn-git.md  
     无任何显示即提交成功  
@@ -22,6 +22,24 @@
   >  使用git status命令，可以查看文件是否被修改过。  
      $ git status  
   >  使用git diff查看修改内容  
+4. 查看提交记录    
+使用git log命令可查看从最近到最远的提交记录  
+> $ git log  
+ commit 8aeceadbca6de5480ca59613c27010f1005625b9 (HEAD -> master)  
+ Author: lhaisong <liuhaisong@skyworth,com>  
+ Date:   Tue Aug 18 15:42:13 2020 +0800  
+  
+    第二次提交  
+  
+ commit 789484c3bec4c967666d56ae1bdcb2f9e852c3a6  
+ Author: lhaisong <liuhaisong@skyworth,com>  
+ Date:   Tue Aug 18 15:30:01 2020 +0800  
+  
+    第一次提交  
+5. 版本回退  
+使用git reset -hard HEAD^命令将文件版本回退到上一版本，其中HEAD表示当前版本，HEAD^表示当前的上一版本，HEAD^^当前上二版本，以此类推，HEAD~100表示当前上100版本  
+
+
 
 
 
