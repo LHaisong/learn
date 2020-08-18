@@ -43,7 +43,7 @@
 两个重要概念：  
 > 工作区：电脑里能看见的文件目录可以看作一个工作区，如learn文件夹。  
   工作区中的隐藏文件.git叫做版本库，版本库中存在暂存区(stage),以及git自动创建的第一个分支master，提交文件的过程使用git add将文件提交到暂存区，然后git commit命令将文件提交到分支master  
-  如果对工作区的文件做了修改但并没有使用git add指令提交到暂存区，直接使用git restore <filename>即可撤销修改，如果已经提交到暂存区，需要使用git restore --staged <filename>命令将文件移出暂存区，然后再做撤销。  
+  如果对工作区的文件做了修改但并没有使用git add指令提交到暂存区，直接使用git restore filename即可撤销修改，如果已经提交到暂存区，需要使用git restore --staged filename命令将文件移出暂存区，然后再做撤销。  
 
 
 
