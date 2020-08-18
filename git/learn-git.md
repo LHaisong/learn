@@ -45,5 +45,11 @@
   工作区中的隐藏文件.git叫做版本库，版本库中存在暂存区(stage),以及git自动创建的第一个分支master，提交文件的过程使用git add将文件提交到暂存区，然后git commit命令将文件提交到分支master  
   如果对工作区的文件做了修改但并没有使用git add指令提交到暂存区，直接使用git restore filename即可撤销修改，如果已经提交到暂存区，需要使用git restore --staged filename命令将文件移出暂存区，然后再做撤销。  
 
+- 分支管理   
+创建分支：git branch dev  
+切换分支：git checkout dev 两个命令可以合并为git checkout -b dev  
+查看分支: git branch 该命令会列出所有分支，当前分支前面标有*  
+> 在分支合并之前，dev分支上所做的事对master分支不可见  
+
 
 
