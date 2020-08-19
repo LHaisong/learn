@@ -34,11 +34,10 @@
  commit 789484c3bec4c967666d56ae1bdcb2f9e852c3a6  
  Author: lhaisong <liuhaisong@skyworth,com>  
  Date:   Tue Aug 18 15:30:01 2020 +0800  
-  
     第一次提交  
 5. 版本回退  
 使用git reset -hard HEAD^命令将文件版本回退到上一版本，其中HEAD表示当前版本，HEAD^表示当前的上一版本，HEAD^^当前上二版本，以此类推，HEAD~100表示当前上100版本  
-
+  
 6. 撤销修改  
 两个重要概念：  
 > 工作区：电脑里能看见的文件目录可以看作一个工作区，如learn文件夹。  
@@ -50,6 +49,7 @@
 切换分支：git checkout dev 两个命令可以合并为git checkout -b dev  
 查看分支: git branch 该命令会列出所有分支，当前分支前面标有*  
 > 在分支合并之前，dev分支上所做的事对master分支不可见  
-
+- 分支冲突  
+> 如果两个
 
 
