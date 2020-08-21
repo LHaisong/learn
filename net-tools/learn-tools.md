@@ -68,6 +68,7 @@
 > adb shell pm path [package-name]
 ### 8.强制停止应用
 > adb shell pm force-stop [package-name]
+
 ### 文件管理
 ### 1.从Android设备下载文件到计算机
 > adb pull [remote] [local]  //remote:Android设备里的文件  local：计算机目录
@@ -83,9 +84,14 @@
 | -s | 列出所有文件以及文件大小| 
 | -n | 列出所有文件及其UID和GID| 
 | -R | 列出所有的子目录中的文件|
-### 3.切换到目标目录
+### 3.文件目录操作
 > adb shell 
-> cd [directory]
+> cd [directory] //切换到指定目录
+> pwd  //输出当前目录
+> mkdir [options] [directory-name] //创建文件目录 options：无->创建目录；-m->创建目录并赋予读写权限
+> cp [source] [dest] //复制文件或目录
+> mv [source] [dest] //移动文件或目录
+>
 ### 4.删除文件或目录
 > adb shell 
 > rm [options] [file or directory]  //options参数可选
@@ -97,3 +103,40 @@
 | -r | 强制删除指定目录中的文件和子目录| 
 | -d | 删除指定目录，即使是非空目录| 
 | -i | 交互性删除，删除前提示| 
+
+### 网络管理
+### 1.查看网络统计信息
+> adb shell netstat
+> adb shell netstat [filepath]  //将网络统计信息输出到指定文件夹
+### 2.测试网络延迟(ping)
+> adb shell ping [域名] //不结束会一直ping ctrl+c停止
+
+### 模拟按键输入
+> adb shell input keyevent [code]
+
+| code | 功能 | 
+| ------ | ------ | 
+|  4   | 返回 | 
+|  26  | 电源 | 
+|  82  | 菜单 | 
+|  24/25 | 音量加/减 | 
+|  85   | 播放/暂停 | 
+|  224/223| 点亮/熄灭屏幕 | 
+
+### 日志打印
+> adb logcat [filter-specs]
+
+| 参数 | 含义 | 
+| ------ | ------ | 
+|*:V |过滤只显示 Verbose 及以上级别(优先级最低)|
+|*:D |过滤只显示 Debug 及以上级别|
+|*:I |过滤只显示 Info 及以上级别|
+|*:W |过滤只显示 Warning 及以上级别|
+|*:E |过滤只显示 Error 及以上级别|
+|*:F |过滤只显示 Fatal 及以上级别|
+|*:S |过滤只显示 Silent 及以上级别(优先级最高，什么也不输出)|
+
+> adb logcat *:W //会将 Warning、Error、Fatal 和 Silent 日志输出。
+
+### 查看Android设备系统属性
+> adb shell getprop ro.product.model  //查看设备型号
