@@ -140,3 +140,12 @@
 
 ### 查看Android设备系统属性
 > adb shell getprop ro.product.model  //查看设备型号
+> adb shell dumpsys battery  //查看设备电池状况
+> adb shell wm size  //查看分辨率
+> adb shell wm density  //查看屏幕密度
+> adb shell getprop ro.build.version.release  //系统版本
+> adb shell ifconfig  //查看IP地址
+> adb shell cat /sys/class/net/wlan0/address  //查看mac地址
+> adb shell cat /proc/cpuinfo  //CPU信息
+> adb shell cat /proc/meminfo  //内存信息
+> adb shell cat /system/build.prop  //硬件与系统属性
