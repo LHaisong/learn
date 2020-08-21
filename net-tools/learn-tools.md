@@ -31,7 +31,8 @@
 - 将本地APK软件安装至模拟器或Android设备；
 - 管理设备或手机模拟器上的预定端口；
 - 在设备或手机模拟器上复制或粘贴文件。
-### adb常用的功能命令
+## adb常用的功能命令
+### 基本命令
 ### 1.查看adb版本/启动adb服务
 > adb version
 > adb start -server
@@ -39,11 +40,12 @@
 > adb connect ip_addr
 ### 3.查看已连接的设备列表
 > adb devices
-### 4.查看应用
+### 应用管理
+### 1.查看应用
 > adb shell pm list packages    //查看所有应用
 > adb shell pm list packages -s //查看系统应用
 > adb shell pm list packages -3 //查看第三方应用
-### 5.安装应用
+### 2.安装应用
 > adb install [-l] [-r] [-t] [-s] [-d] [-g] [apk-file-path]  
 
 | 参数 | 含义 | 
@@ -54,18 +56,44 @@
 | -s | 安装应用到sdcard| 
 | -d | 降级覆盖安装| 
 | -g | 授予所有运行权限| 
-### 6.卸载应用
+### 3.卸载应用
 > adb uninstall [-k] [package-name] //其中-k参数可选，表示清除应用数据和缓存目录
-### 7.清除应用数据和缓存
+### 4.清除应用数据和缓存
 > adb shell pm clear [package-name]
-### 8.查看应用详细信息
+### 5.查看应用详细信息
 > adb shell dumpsys package [package-name] 
-### 9.查看正在运行的服务
+### 6.查看正在运行的服务
 > adb shell dumpsys activity services [<package-name>]
-### 10.查看应用的安装路径
+### 7.查看应用的安装路径
 > adb shell pm path [package-name]
-### 11.强制停止应用
+### 8.强制停止应用
 > adb shell pm force-stop [package-name]
-### 12.从Android设备下载文件到计算机
+### 文件管理
+### 1.从Android设备下载文件到计算机
 > adb pull [remote] [local]  //remote:Android设备里的文件  local：计算机目录
 > adb push [local] [remote]  //将计算机的文件上传到Android设备
+### 2.列出指定目录的内容
+> adb shell ls [options] [directory] //directory可选，省略则表示列出根目录
+
+| 参数 | 含义 | 
+| ------ | ------ | 
+| 无 | 列出所有文件和目录 | 
+| -a | 列出目录下所有文件(包含隐藏的)| 
+| -i | 列出所有文件以及对应的索引编号| 
+| -s | 列出所有文件以及文件大小| 
+| -n | 列出所有文件及其UID和GID| 
+| -R | 列出所有的子目录中的文件|
+### 3.切换到目标目录
+> adb shell 
+> cd [directory]
+### 4.删除文件或目录
+> adb shell 
+> rm [options] [file or directory]  //options参数可选
+
+| 参数 | 含义 | 
+| ------ | ------ | 
+| 无 | 删除文件 | 
+| -f | 强制删除文件，系统不提示| 
+| -r | 强制删除指定目录中的文件和子目录| 
+| -d | 删除指定目录，即使是非空目录| 
+| -i | 交互性删除，删除前提示| 
