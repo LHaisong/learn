@@ -2,7 +2,7 @@
 int main()
 {
     char str[]="this is a string";
-    puts(str);
-    printf("str:%s",str);
+    char c=getchar();
+    printf("c:%s\n",c);
     return 0;
 }
