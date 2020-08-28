@@ -23,4 +23,4 @@
 > sudo vim /etc/vsftpd.user_list   //在vsftpd.user_list中添加ftpuser，表示可使用ftpuser登入ftp服务器  
 > sudo service vsftpd stop/start  //ftp服务暂停与停止  
 - ftp服务器测试正常，在Windows上能进行远程访问  
-## Ubuntu HTTP服务器搭建
+## HTTP服务器搭建
