@@ -41,3 +41,7 @@ port 80：端口过滤器，表示仅抓取端口号80上的流量
 > tcpdump -s 0 -v -n -l | egrep -i "POST /|GET /|Host:"
 ### 4.提取服务器端和客户端的cookie
 > tcpdump -nn -A -s0 -l | egrep -i 'Set-Cookie|Host:|Cookie:'
+
+
+
+tcpdump -s0 -i eth0 -C 500M -W 2 -w /storage/sda4/ip.pcap
