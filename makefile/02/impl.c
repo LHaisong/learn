@@ -1,3 +1,4 @@
+#include<stdio.h>
 #include "main.h"
 void func1(){
     printf("this is func1\n");

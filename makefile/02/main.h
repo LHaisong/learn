@@ -1,4 +1,4 @@
-#include<stdio.h>
+//main.h
 void func1();
 void func2();
 void func3();
