@@ -23,7 +23,7 @@ for %%I in (*.*) do echo %%I
 
 rem for /f                                                     
 echo ++++++++++++++++++++打印文件内容++++++++++++++++++++++
-for /f %%I in (testfor.txt) do echo %%I                                                                                                             
+for /f %%I in (testfor.txt) do echo %%I          
 echo ++++++++++++++++添加delims,默认参数是空格++++++++++++++++++++++
 for /f "delims=" %%I in (c.txt) do echo %%I                                                        
 echo ++++++++++++++++添加tokens开关++++++++++++++++++++++
@@ -38,3 +38,10 @@ echo ++++++++++++++++++++显示文件夹++++++++++++++++++++++
 for /d %%I in (c:\*) do echo %%I
 echo ++++++++++++++++++++显示p开头文件夹++++++++++++++++++++++
 for /d %%I in (c:\*) do echo %%I
+
+rem for /r
+echo +++++++++++++++++++++枚举C盘所有的exe文件++++++++++++++++
+for /r C: %%I in (*.exe) do echo %%I
+echo +++++++++++++++++++++枚举chrome.exe所在的文件夹++++++++++++++++
+for /r C:\ %%I in (Chrome.exe) do if exist %%I echo %%I
+pause

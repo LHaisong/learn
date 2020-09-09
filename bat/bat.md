@@ -173,19 +173,70 @@ if errorlevel 0 echo copy file success
 > 1. start表示开始值，step表示每次递增的值，end表示结束值
 
 3. 含开关/F的for语句具有最强大的功能，它能够对字符串进行操作，也能够对命令的返回值进行操作，还可以访问硬盘上的ASCII码文件，比如txt文档等。其命令格式为：
-```
-for /F ["options"] %%I in (set) do command
-其中，set为("string"、'command'、file-set)中的一个；options是(eol=c、skip=n、delims=xxx、tokens=x,y,m-n、usebackq)中的一个或多个的组合。各选项的意义参见for /f。一般情况下，使用较多的是skip、tokens、delims三个选项
-1.delims分隔符，默认是空格，使用delims的时候默认将目标分为n个小节，如this is test file就可以被空格分为4个小节
-2.tokens用于定位1中的小节，如tokens=3表示获取第3个小节、tokens=2,5获取第2和5小节
-3.skip=n跳过n行
-4.eol=x 忽略以x开头的行
-```
+> for /F ["options"] %%I in (set) do command
+> 其中，set为("string"、'command'、file-set)中的一个；options是(eol=c、skip=n、delims=xxx、tokens=x,y,m-n、usebackq)中的一个或多个的组合。各选项的意义参见for /f。一般情况下，使用较多的是skip、tokens、delims三个选项
+> 1. delims分隔符，默认是空格，使用delims的时候默认将目标分为n个小节，如this is test file就可以被空格分为4个小节
+> 2. tokens用于定位1中的小节，如tokens=3表示获取第3个小节、tokens=2,5获取第2和5小节
+> 3. skip=n跳过n行
+> 4. eol=x 忽略以x开头的行
+
 4. for /d 参数 查询目录
 > FOR /D %%variable IN (set) DO command [command-parameters]
 > 1. 这个参数主要用于目录搜索,不会搜索文件。
 > 2. 只能搜索指定目录和缺省情况当前目录下的目录名字，不搜索子目录。
 
+5. for /r 参数 遍历搜索指定文件
+> FOR /r [[drive:]path] %%variable IN (set) DO command [command-parameters]
+> 检查以  [drive:]path  为根的目录树，指向每个目录中的 FOR  语句。如果在  /R  后没有指定目录，则使用当前目录。如果集仅为一个单点(.)字符，则枚举该目录树。如果该值缺省，则遍历当前目录
+```
+@echo off
+SETLOCAL ENABLEDELAYEDEXPANSION
+::for %%i in (*.*) do echo %%i
+set /a sum=0
+set /a ii=0
+set str= c d e f g h i j k l m n o p q r s t u v w x y z
+rem 计算1+2+······+100的值
+echo ++++++++++++++++++++计算值++++++++++++++++++++++
+for /l %%i in (1,1,100) do (
+    set /a ii+=1
+    set /a sum+=!ii!
+)
+echo %sum%
+
+rem 检测硬盘分区
+echo ++++++++++++++++++++检测硬盘分区++++++++++++++++++++++
+for %%I in (%str%) do (
+    if exist %%I: echo %%I:
+)
+rem 列出当前目录的所有文件
+echo ++++++++++++++++++++列出文件++++++++++++++++++++++
+for %%I in (*.*) do echo %%I
+
+rem for /f                                                     
+echo ++++++++++++++++++++打印文件内容++++++++++++++++++++++
+for /f %%I in (testfor.txt) do echo %%I          
+echo ++++++++++++++++添加delims,默认参数是空格++++++++++++++++++++++
+for /f "delims=" %%I in (c.txt) do echo %%I                                                        
+echo ++++++++++++++++添加tokens开关++++++++++++++++++++++
+for /f "tokens=2,8" %%I in (c.txt) do echo %%I %%J
+echo ++++++++++++++++添加skip开关++++++++++++++++++++++
+for /f "delims=； skip=2" %%I in (c.txt) do echo %%I
+echo ++++++++++++++++添加eol开关++++++++++++++++++++++
+for /f "delims=; eol=2" %%I in (c.txt) do echo %%I
+
+rem for /d
+echo ++++++++++++++++++++显示文件夹++++++++++++++++++++++
+for /d %%I in (c:\*) do echo %%I
+echo ++++++++++++++++++++显示p开头文件夹++++++++++++++++++++++
+for /d %%I in (c:\*) do echo %%I
+
+rem for /r
+echo +++++++++++++++++++++枚举C盘所有的exe文件++++++++++++++++
+for /r C: %%I in (*.exe) do echo %%I
+echo +++++++++++++++++++++枚举chrome.exe所在的文件夹++++++++++++++++
+for /r C:\ %%I in (Chrome.exe) do if exist %%I echo %%I
+pause
+```
 ## 8.函数操作
 ```
 @echo off  
