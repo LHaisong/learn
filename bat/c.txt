@@ -1,0 +1,14 @@
+ Volume in drive C is 系统
+ Volume Serial Number is 09C1-B27D
+
+ Directory of c:\
+
+2020/08/14  11:19    <DIR>          Intel
+2020/08/18  14:51    <DIR>          PerfLogs
+2020/09/07  15:53    <DIR>          Program Files
+2020/08/20  16:44    <DIR>          Program Files (x86)
+2020/08/14  11:26    <DIR>          TsdTemp
+2020/08/18  09:50    <DIR>          Users
+2020/08/21  17:16    <DIR>          Windows
+               0 File(s)              0 bytes
+               7 Dir(s)  29,015,015,424 bytes free
